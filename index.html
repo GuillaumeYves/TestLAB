@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Library App</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="mt-2 mb-5">
+        <h1>The Library App</h1>
+      </header>
+
+      <section class="my-4 text-center mb-5">
+        <h2>Latest Books</h2>
+        <div
+          id="latestBooksCarousel"
+          class="carousel slide"
+          data-ride="carousel">
+          <div class="carousel-inner" id="latestBooks"></div>
+          <a
+            class="carousel-control-prev"
+            href="#latestBooksCarousel"
+            role="button"
+            data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#latestBooksCarousel"
+            role="button"
+            data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </section>
+
+      <div class="row">
+        <div class="col-md-3">
+          <h3 class="text-center">Add a Book</h3>
+          <form id="addBookForm">
+            <div class="form-group">
+              <label for="bookTitle">Title</label>
+              <input type="text" id="bookTitle" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="bookAuthor">Author</label>
+              <input
+                type="text"
+                id="bookAuthor"
+                class="form-control"
+                required />
+            </div>
+            <div class="form-group">
+              <label for="bookDate">Publication Date</label>
+              <input
+                type="date"
+                id="bookDate"
+                class="form-control"
+                value="${new Date().toISOString().split('T')[0]}"
+                required />
+            </div>
+            <div class="form-group">
+              <label for="bookImage">Image</label>
+              <input
+                type="file"
+                id="bookImage"
+                class="form-control"
+                accept="image/*"
+                required />
+            </div>
+            <button type="submit" class="btn btn-primary">Add Book</button>
+          </form>
+        </div>
+        <div class="col-md-9">
+          <h3 class="text-center">All Books</h3>
+          <p id="totalBooksCount" class="small text-center"></p>
+          <input
+            type="text"
+            id="searchInput"
+            class="form-control w-50 my-3"
+            placeholder="Search for books or authors..." />
+          <div
+            id="booksGrid"
+            class="row overflow-auto"
+            style="max-height: 30vh"></div>
+          <button
+            id="loadMoreButton"
+            class="btn btn-primary"
+            style="display: block; margin: 20px auto">
+            Load More
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="bookModal"
+      tabindex="-1"
+      aria-labelledby="bookModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bookModalLabel">Book Details</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img
+              id="modalBookImage"
+              src=""
+              class="img-fluid"
+              alt="Book Image" />
+            <h5 id="modalBookTitle"></h5>
+            <p id="modalBookAuthor"></p>
+            <p id="modalBookDate"></p>
+            <p id="modalBookDescription"></p>
+            <button id="editBookBtn" class="btn btn-warning mt-3">Edit</button>
+            <button id="deleteBookBtn" class="btn btn-danger mt-3">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

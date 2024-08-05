@@ -1,0 +1,17 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+
+.modal-body img {
+  height: 300px;
+  object-fit: cover;
+}
+
+#booksGrid {
+  overflow-y: auto;
+}

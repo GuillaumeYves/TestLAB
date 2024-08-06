@@ -7,6 +7,9 @@
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/5/lux/bootstrap.min.css" />
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
@@ -14,33 +17,32 @@
   </head>
   <body>
     <div class="container">
-      <header class="mt-2 mb-5">
-        <h1>The Library App</h1>
-      </header>
-
-      <section class="my-4 text-center mb-5">
+      <section class="my-2 text-center mb-5">
         <h2>Latest Books</h2>
         <div
           id="latestBooksCarousel"
-          class="carousel slide"
+          class="carousel slide carousel-fade"
           data-ride="carousel">
-          <div class="carousel-inner" id="latestBooks"></div>
-          <a
-            class="carousel-control-prev"
-            href="#latestBooksCarousel"
-            role="button"
-            data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a
-            class="carousel-control-next"
-            href="#latestBooksCarousel"
-            role="button"
-            data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+          <div class="carousel-inner" id="latestBooks">
+            <div class="carousel-item active">
+              <div class="card">
+                <img src="book1.jpg" class="card-img-top" alt="Book 1" />
+                <div class="card-body">
+                  <h5 class="card-title">Book Title 1</h5>
+                  <p class="card-text">Description of book 1.</p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="card">
+                <img src="book2.jpg" class="card-img-top" alt="Book 2" />
+                <div class="card-body">
+                  <h5 class="card-title">Book Title 2</h5>
+                  <p class="card-text">Description of book 2.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -83,21 +85,58 @@
         </div>
         <div class="col-md-9">
           <h3 class="text-center">All Books</h3>
-          <p id="totalBooksCount" class="small text-center"></p>
+          <div class="form-group w-50 my-3">
+            <label for="genreSelect">Filter</label>
+            <select id="genreSelect" class="form-control">
+              <option value="" disabled selected hidden>Filter by Genre</option>
+              <option value="love">Love</option>
+              <option value="fiction">Fiction</option>
+              <option value="mystery">Mystery</option>
+              <option value="fantasy">Fantasy</option>
+              <option value="romance">Romance</option>
+              <option value="science">Science</option>
+              <option value="history">History</option>
+              <option value="biography">Biography</option>
+              <option value="children">Children's Literature</option>
+              <option value="horror">Horror</option>
+              <option value="adventure">Adventure</option>
+              <option value="non-fiction">Non-Fiction</option>
+              <option value="poetry">Poetry</option>
+              <option value="classics">Classics</option>
+              <option value="self-help">Self-Help</option>
+              <option value="travel">Travel</option>
+              <option value="cookbooks">Cookbooks</option>
+              <option value="graphic-novels">Graphic Novels</option>
+              <option value="young-adult">Young Adult</option>
+              <option value="anthologies">Anthologies</option>
+              <option value="dystopian">Dystopian</option>
+              <option value="thriller">Thriller</option>
+              <option value="suspense">Suspense</option>
+              <option value="philosophy">Philosophy</option>
+              <option value="psychology">Psychology</option>
+              <option value="spirituality">Spirituality</option>
+              <option value="technology">Technology</option>
+              <option value="business">Business</option>
+              <option value="politics">Politics</option>
+              <option value="economics">Economics</option>
+              <option value="sports">Sports</option>
+              <option value="music">Music</option>
+              <option value="art">Art</option>
+              <option value="education">Education</option>
+            </select>
+          </div>
           <input
             type="text"
             id="searchInput"
             class="form-control w-50 my-3"
             placeholder="Search for books or authors..." />
-          <div
-            id="booksGrid"
-            class="row overflow-auto"
-            style="max-height: 30vh"></div>
+
+          <div id="booksGrid" class="row"></div>
           <button
             id="loadMoreButton"
             class="btn btn-primary"
             style="display: block; margin: 20px auto">
-            Load More
+            Next
           </button>
         </div>
       </div>
@@ -112,7 +151,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="bookModalLabel">Book Details</h5>
+            <h5 class="modal-title" id="modalBookTitle"></h5>
             <button
               type="button"
               class="close"
@@ -121,13 +160,13 @@
               <span>&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body text-center">
             <img
               id="modalBookImage"
               src=""
               class="img-fluid"
               alt="Book Image" />
-            <h5 id="modalBookTitle"></h5>
+            <p id="modalBookGenre"></p>
             <p id="modalBookAuthor"></p>
             <p id="modalBookDate"></p>
             <p id="modalBookDescription"></p>
